@@ -1,0 +1,86 @@
+<mvc:View  controllerName="rdc.controller.MainMart"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:i="sap.f">
+
+    <Panel id="Panel_Header" headerText="Where do you live ?">
+      <HBox >
+        <Input id="Input_Location" value="Da Nang" textAlign="Center" ></Input>
+        <Button id="Button_Location" text="Search" press="onShowHello"></Button>
+      </HBox>
+      
+    </Panel>
+
+    <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+        <f:SimpleForm id="SimpleFormDisplay480_12120Dual"
+          editable="false"
+          layout="ResponsiveGridLayout"
+          title="Result"
+          labelSpanXL="5"
+          labelSpanL="5"
+          labelSpanM="13"
+          labelSpanS="13"
+          adjustLabelSpan="false"
+          emptySpanXL="0"
+          emptySpanL="0"
+          emptySpanM="0"
+          emptySpanS="0"
+          columnsXL="4"
+          columnsL="4"
+          columnsM="4"
+          singleContainerFullSize="false" >
+          <f:content>
+            <core:Title id="_IDGenTitle1" />
+                <Image id="Icon_wstatus" ></Image>
+                <Text id="Text_temp_result" ></Text>
+
+            <core:Title/>
+                <VBox alignItems="End">
+                      <Text id="Text_precip" text="Precip" textAlign="End" visible="false"></Text>
+                      <Text id="Text_humidity" text="Humidity" textAlign="End" visible="false"></Text>
+                      <Text id="Text_wind" text="Wind" textAlign="End" visible="false"></Text>
+                </VBox>
+
+                <VBox alignItems="Start">
+                      <Text id="Text_precip_result"></Text>
+                      <Text id="Text_humidity_result" ></Text>
+                      <Text id="Text_wind_result" ></Text>
+                </VBox>
+            <core:Title />
+
+            <core:Title />
+                      <VBox >
+                            <Label id="_IDGenLabel1" text="Weather" textAlign="End" visible="false"></Label>
+                            <Text id="Text_day"></Text>
+                            <!-- <Text id="text_temp"></Text> -->
+                            <Text id="Text_status"></Text>
+                      </VBox>
+                      
+            <core:Title />
+
+                
+          </f:content>
+        </f:SimpleForm>
+	</VBox>
+
+  <i:GridList
+			id="gridList"
+			headerText="Forecast"
+			items="{/forecast/forecastday}">
+			<i:GridListItem id="_IDGenGridListItem1">
+				<VBox class="sapUiSmallMargin">
+					<layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="0" /> 
+					</layoutData>
+
+					<Title text="{date}" wrapping="true" />
+          <Label text="{day/mintemp_c}°C to {day/maxtemp_c}°C"></Label>
+				</VBox>
+        <Image src="{day/condition/icon}" ></Image>
+			</i:GridListItem>
+		</i:GridList>
+
+
+</mvc:View>
